@@ -69,3 +69,37 @@ country, setCountry
 Usage:
 
 const { timings, loading } = usePrayerTimes();
+
+🧩 Example Usage in App.js
+<DarkModeProvider>
+  <PrayerTimesProvider initialCity="Cairo" initialCountry="Egypt">
+    <Payars />
+  </PrayerTimesProvider>
+</DarkModeProvider>
+
+▶️ Getting Started
+1. Install dependencies
+npm install
+
+2. Start the development server
+npm start
+
+🌐 API Reference
+
+Aladhan Prayer Times API
+https://aladhan.com/prayer-times-api
+
+✨ Future Enhancements
+
+Dropdown city selector
+
+Auto-detect user location
+
+Prayer reminders/notifications
+
+UI improvements with Tailwind or MUI
+
+🙌 Author
+
+Developed by Abdallah
+MERN Stack Developer
