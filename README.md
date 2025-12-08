@@ -1,67 +1,71 @@
-# Getting Started with Create React App
+📖 Prayer Times React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple React application that displays daily prayer times for a selected city using the Aladhan API, with full Dark Mode support and clean state management using the Context API.
 
-## Available Scripts
+🚀 Features
 
-In the project directory, you can run:
+Fetches prayer times dynamically using an external API.
 
-### `npm start`
+Built-in Dark Mode using a dedicated context.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Change city and country at runtime.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Clean architecture using Context API + Custom Hooks.
 
-### `npm test`
+Components fully separated from business logic.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+🛠️ Tech Stack
 
-### `npm run build`
+React (Hooks + Context API)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Axios for API calls
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+CSS for styling
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Aladhan Prayer Times API
 
-### `npm run eject`
+📂 Project Structure
+src/
+│── App.js
+│── App.css
+│
+├── components/
+│   └── Payars.jsx
+│
+├── DarkModeContext.js
+└── PrayerTimesContext.js
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+⚙️ How It Works
+1️⃣ Dark Mode Context
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Handles the current theme (light/dark) and provides a setter:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+const [darkMode, setDarkMode] = useState(false);
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+Usage inside any component:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+const { darkMode, setDarkMode } = useDarkMode();
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2️⃣ Prayer Times Context
 
-### Code Splitting
+Fetches prayer times from the API based on the selected city and country:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+API used:
 
-### Analyzing the Bundle Size
+https://api.aladhan.com/v1/timingsByCity?city=${city}&country=${country}&method=5
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+Provided values:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+timings
 
-### Advanced Configuration
+loading
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+city, setCity
 
-### Deployment
+country, setCountry
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment
-(https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Usage:
+
+const { timings, loading } = usePrayerTimes();
